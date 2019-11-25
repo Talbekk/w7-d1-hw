@@ -10,12 +10,22 @@
   <body>
     <div id="app">
       <ul>
-        <li v-for="item in list">{{ item }}</li>
+        <li v-for="item in list">
+          <span>{{ item.name }}</span>
+          <span>{{ item.priorityLevel }} Priority</span>
+        </li>
       </ul>
       <form v-on:submit.prevent="saveNewItem">
+
         <label for="new-item">Add a new item:</label>
         <input id="new-item" type="text" v-model="newItem"/>
         <input type="submit" value="Save New Item"/>
+
+        <label for="new-item" class="primary">Is this a high priority task?</label>
+        <input type="radio" name="new-item" id="High" value="High" v-model="newPriority">
+        <label for="yes">Yes</label>
+        <input type="radio" name="new-item" id="Low" value="Low" v-model="newPriority">
+        <label for="no">No</label>
       </form>
     </div>
   </body>
